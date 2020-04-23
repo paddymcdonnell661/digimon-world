@@ -105,26 +105,18 @@ agumon = sprites.create(img`
 controller.moveSprite(agumon, 100, 0)
 scene.setBackgroundColor(9)
 tiles.setTilemap(tiles.createTilemap(
-            hex`100010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010101010101010101010101010101010c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c`,
+            hex`0a000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000500030005000a000500`,
             img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
-2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+. . . . . . . . . . 
+. . . . . . . . . . 
+. . . . . . . . . . 
+. . . . . . . . . . 
+. . . . . . . . . . 
+. . . . . . . . . . 
+. . . . . . . . . . 
+. . . . . . . . . . 
 `,
-            [myTiles.tile0,sprites.castle.tilePath2,sprites.builtin.forestTiles0,sprites.castle.rock0,sprites.castle.saplingPine,sprites.castle.saplingOak,sprites.castle.shrub,sprites.dungeon.hazardLava0,myTiles.tile1,sprites.dungeon.hazardWater,sprites.castle.rock1,sprites.dungeon.hazardLava1,sprites.castle.tilePath5,sprites.dungeon.greenOuterWest0,sprites.dungeon.greenOuterNorthWest,sprites.castle.tilePath8,sprites.castle.tileGrass2],
+            [myTiles.tile0,sprites.castle.tilePath2,sprites.builtin.forestTiles0,sprites.castle.rock0,sprites.castle.saplingPine,sprites.castle.saplingOak,sprites.castle.shrub,sprites.dungeon.hazardLava0,myTiles.tile1,sprites.dungeon.hazardWater,sprites.castle.rock1,sprites.dungeon.hazardLava1,sprites.castle.tilePath5,sprites.dungeon.greenOuterWest0,sprites.dungeon.greenOuterNorthWest,sprites.castle.tilePath8,sprites.castle.tileGrass2,sprites.builtin.crowd0,sprites.builtin.field0,sprites.builtin.field1,sprites.castle.rock2,sprites.dungeon.buttonOrange,sprites.dungeon.buttonOrangeDepressed,sprites.dungeon.buttonTeal,sprites.dungeon.buttonTealDepressed,sprites.dungeon.buttonPink,sprites.dungeon.buttonPinkDepressed],
             TileScale.Sixteen
         ))
 agumon.ay = 350
