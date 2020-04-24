@@ -12,6 +12,7 @@ namespace SpriteKind {
     export const vaccine = SpriteKind.create()
     export const virus = SpriteKind.create()
     export const data = SpriteKind.create()
+    export const coin = SpriteKind.create()
 }
 namespace myTiles {
     //% blockIdentity=images._tile
@@ -52,9 +53,34 @@ f . . f f f f f f f f 7 f . . .
 7 7 7 . . f . . 1 f 2 . 2 . 9 . 
 f . . 9 . . 9 . . . 2 2 2 . . . 
 `
+    //% blockIdentity=images._tile
+    export const tile2 = img`
+5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+`
 }
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile1, function (sprite, location) {
     game.over(true, effects.confetti)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function (sprite, location) {
+    game.over(false, effects.melt)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.coin, function (sprite, otherSprite) {
+    info.changeScoreBy(1)
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (agumon.vy == 0) {
@@ -67,6 +93,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sp
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardWater, function (sprite, location) {
     game.over(false, effects.bubbles)
 })
+let bits: Sprite = null
 let agumon: Sprite = null
 agumon = sprites.create(img`
 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
@@ -105,19 +132,49 @@ agumon = sprites.create(img`
 controller.moveSprite(agumon, 100, 0)
 scene.setBackgroundColor(9)
 tiles.setTilemap(tiles.createTilemap(
-            hex`0a000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000500030005000a000500`,
+            hex`1000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002`,
             img`
-. . . . . . . . . . 
-. . . . . . . . . . 
-. . . . . . . . . . 
-. . . . . . . . . . 
-. . . . . . . . . . 
-. . . . . . . . . . 
-. . . . . . . . . . 
-. . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
 `,
-            [myTiles.tile0,sprites.castle.tilePath2,sprites.builtin.forestTiles0,sprites.castle.rock0,sprites.castle.saplingPine,sprites.castle.saplingOak,sprites.castle.shrub,sprites.dungeon.hazardLava0,myTiles.tile1,sprites.dungeon.hazardWater,sprites.castle.rock1,sprites.dungeon.hazardLava1,sprites.castle.tilePath5,sprites.dungeon.greenOuterWest0,sprites.dungeon.greenOuterNorthWest,sprites.castle.tilePath8,sprites.castle.tileGrass2,sprites.builtin.crowd0,sprites.builtin.field0,sprites.builtin.field1,sprites.castle.rock2,sprites.dungeon.buttonOrange,sprites.dungeon.buttonOrangeDepressed,sprites.dungeon.buttonTeal,sprites.dungeon.buttonTealDepressed,sprites.dungeon.buttonPink,sprites.dungeon.buttonPinkDepressed],
+            [myTiles.tile0,myTiles.tile1,myTiles.tile2,sprites.castle.tilePath5,sprites.castle.tilePath2,sprites.dungeon.hazardLava1,sprites.dungeon.buttonPinkDepressed],
             TileScale.Sixteen
         ))
 agumon.ay = 350
 scene.cameraFollowSprite(agumon)
+for (let value of tiles.getTilesByType(myTiles.tile2)) {
+    bits = sprites.create(img`
+. . . . . . . . . . . . . . . . 
+. . . . 5 . . 5 5 . . 5 . . . . 
+. . . . . 5 . 5 5 . 5 . . . . . 
+. . . . . . . . . . . . . . . . 
+. 5 . . 5 5 . 5 . . 5 5 . . 5 . 
+. . 5 . 5 5 . . 5 . 5 5 . 5 . . 
+. . . . . . . . . . . . . . . . 
+. 5 5 . . 5 . 5 5 . . 5 . 5 5 . 
+. 5 5 . 5 . . 5 5 . 5 . . 5 5 . 
+. . . . . . . . . . . . . . . . 
+. . 5 . 5 5 . 5 . . 5 5 . 5 . . 
+. 5 . . 5 5 . . 5 . 5 5 . . 5 . 
+. . . . . . . . . . . . . . . . 
+. . . . . 5 . 5 5 . 5 . . . . . 
+. . . . 5 . . 5 5 . . 5 . . . . 
+. . . . . . . . . . . . . . . . 
+`, SpriteKind.coin)
+    tiles.placeOnTile(bits, value)
+    tiles.setTileAt(value, myTiles.tile0)
+}
